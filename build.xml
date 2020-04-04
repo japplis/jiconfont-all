@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jIconFont-all" basedir="." default="all">
+
+  <target name="init">
+  </target>
+
+  <target name="compile" depends="init">
+    <javac debug="true"
+           source="1.8"
+           deprecation="false"
+           classpath="../classes"
+           includeantruntime="true"
+           destdir="classes"
+           srcdir="src">
+    </javac>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete>
+      <fileset dir="classes" />
+    </delete>
+  </target>
+  
+  <target name="release" depends="compile" description="Creates the jar library">
+    <jar destfile="${ant.project.name}.jar">
+      <fileset dir="classes" />
+      <fileset dir="src">
+        <include name="fonts/**/*.ttf" />
+      </fileset>
+    </jar>
+  </target>
+
+</project>
